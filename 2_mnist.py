@@ -147,9 +147,9 @@ def main():
                 correct = model.correct(logits, batch_y)
 
             processed += len(batch_x)
-            print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}\tAccuracy: {:.2f}%\tBest: {:.2f}%'.format(
-                epoch, processed, len(train_loader.dataset),
-                100. * batch_idx / len(train_loader), loss.item(), 100 * correct/len(batch_x), best_test_acc))
+#             print('Train Epoch: {} [{}/{} ({:.0f}%)]\tLoss: {:.6f}\tAccuracy: {:.2f}%\tBest: {:.2f}%'.format(
+#                 epoch, processed, len(train_loader.dataset),
+#                 100. * batch_idx / len(train_loader), loss.item(), 100 * correct/len(batch_x), best_test_acc))
 
 
         model.eval()
