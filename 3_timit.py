@@ -155,9 +155,9 @@ def main():
             processed += len(batch_x)
             step += 1
 
-            print("Epoch {} [{}/{} ({:.0f}%)]\tLoss: {:.2f} "
-                  .format(epoch, processed, len(train_loader.dataset),
-                      100. * processed / len(train_loader.dataset), loss))
+            #print("Epoch {} [{}/{} ({:.0f}%)]\tLoss: {:.2f} "
+            #      .format(epoch, processed, len(train_loader.dataset),
+              #        100. * processed / len(train_loader.dataset), loss))
 
         model.eval()
         with torch.no_grad():
