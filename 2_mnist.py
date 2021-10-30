@@ -69,6 +69,7 @@ class Model(nn.Module):
     def __init__(self, hidden_size, permute):
         super(Model, self).__init__()
         self.permute = permute
+        self.hidden_size = hidden_size
         permute = np.random.RandomState(92916)
         self.register_buffer("permutation", torch.LongTensor(permute.permutation(784)))
         if args.mode == "lstm":
