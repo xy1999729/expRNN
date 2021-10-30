@@ -90,13 +90,13 @@ class Model(nn.Module):
         else:
             state = (torch.zeros((inputs.size(0), self.hidden_size), device=inputs.device),
                      torch.zeros((inputs.size(0), self.hidden_size), device=inputs.device))
-        #outputs = []
+        outputs = []
         for input in torch.unbind(inputs, dim=1):
             out_rnn, state = self.rnn(input.unsqueeze(dim=1), state)
-            #if isinstance(self.rnn, nn.LSTMCell):
-            #    state = (out_rnn, state)
-        #    outputs.append(self.lin(out_rnn))
-        return self.lin(state)
+            if isinstance(self.rnn, nn.LSTMCell):
+                state = (out_rnn, state)
+            outputs.append(self.lin(out_rnn))
+        return torch.stack(outputs, dim=0)
     def loss(self, logits, y):
         return self.loss_func(logits, y)
 
