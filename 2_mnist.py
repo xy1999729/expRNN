@@ -95,9 +95,8 @@ class Model(nn.Module):
             out_rnn, state = self.rnn(input.unsqueeze(dim=1), state)
             if isinstance(self.rnn, nn.LSTMCell):
                 state = (out_rnn, state)
-            outputs.append(self.lin(out_rnn))
-        return torch.stack(outputs)
-
+            outputs.append(self.lin(out_rnn, state))
+        return torch.stack(outputs, dim=1)
     def loss(self, logits, y):
         return self.loss_func(logits, y)
 
