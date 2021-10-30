@@ -98,7 +98,7 @@ class Model(nn.Module):
             outputs.append(self.lin(out_rnn))
         return torch.stack(outputs, dim=1)
     def loss(self, logits, y):
-        return self.loss_func(logits.view(-1, 10), y.view(-1))
+        return self.loss_func(logits.view(-1, 10), y)
 
     def correct(self, logits, y):
         return torch.eq(torch.argmax(logits, dim=1), y).float().sum()
